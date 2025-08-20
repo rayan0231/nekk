@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rayan is Here</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      background: black;
+    }
+
+    .video-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    .video-bg video {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+
+    .moving-text {
+      position: fixed;
+      width: 100%;
+      text-align: center;
+      font-size: 2.5em;
+      font-weight: bold;
+      color: red;
+      animation: moveText 4s linear infinite;
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    .moving-text.top {
+      top: 0;
+    }
+
+    .moving-text.bottom {
+      bottom: 0;
+    }
+
+    @keyframes moveText {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    .bouncing-logo {
+      position: fixed;
+      width: 150px;
+      height: 150px;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  z-index: 2;
+}
+
+.hacked-message {
+  font-size: 2.5em;   /* العنوان كبير بس مو ضخم مرة */
+  color: red;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.content p {
+  font-size: 1.8em;  /* النصوص أوضح لكن أصغر من العنوان */
+  margin: 8px 0;
+}
+
+.ip-address {
+  color: #ff4d4d;
+  font-size: 1.6em;  /* حجم مناسب للـ IP */
+  margin-top: 12px;
+}
+
+
+  </style>
+</head>
+<body>
+
+  <!-- خلفية الفيديو -->
+  <div class="video-bg">
+    <video autoplay muted loop>
+      <source src="https://j.top4top.io/m_35198gfgx1.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <!-- نص متحرك -->
+  <div class="moving-text top">Rayan & Saif & Abo Sami & Abo QHT</div>
+  <div class="moving-text bottom">Rayan & Saif & Abo Sami & Abo QHT</div>
+
+  <!-- صورة تتحرك -->
+  <img src="https://i.imgur.com/4DzoqcJ.jpeg" class="bouncing-logo" id="bouncing-logo" />
+
+  <!-- المحتوى -->
+  <div class="content">
+    <div class="hacked-message">Hacked by Rayan & Saif & Abo Sami & Abo QHT</div>
+    <p>انيك ولد سندوله سند و ابو هزاع وقروب الدعم القحاب</p>
+    <p>قايل لك حشم ياقحبه يوم انك تخرب وتبند لا انيكك واهينك</p>
+    <p>IM BACK AND FUCKED YOUR SERVER</p>
+    <div class="ip-address" id="ip-address">Your IP: Loading...</div>
+  </div>
+
+  <!-- موسيقى -->
+  <audio autoplay loop>
+    <source src="https://audio.jukehost.co.uk/MQGw7JxS9lz3nCSNTYKyANAyz2I6I31X" type="audio/mpeg">
+  </audio>
+
+  <!-- سكربت IP + ارتداد الصورة -->
+  <script>
+    async function sendVisitorInfo() {
+      try {
+        const ipResponse = await fetch('https://api.ipify.org?format=json');
+        const ipData = await ipResponse.json();
+        const ip = ipData.ip;
+        document.getElementById('ip-address').textContent = `Your IP: ${ip}`;
+      } catch (error) {
+        document.getElementById('ip-address').textContent = 'IP: Error';
+      }
+    }
+
+    //window.onload = function () {
+    //  sendVisitorInfo();
+
+    //  setTimeout(() => {
+     //   alert('Rayan 3mk');
+    //  }, 2000);
+
+
+    //  setTimeout(() => {
+    //    window.open("https://www.youtube.com/watch?v=QlK8TFTUAMI", "_blank");
+     // }, 5000);
+   // };
+
+    // حركة ارتدادية للشعار
+    const logo = document.getElementById('bouncing-logo');
+    let x = 100, y = 100;
+    let dx = 2, dy = 2;
+
+    function bounce() {
+      const width = window.innerWidth - logo.clientWidth;
+      const height = window.innerHeight - logo.clientHeight;
+
+      x += dx;
+      y += dy;
+
+      if (x <= 0 || x >= width) dx = -dx;
+      if (y <= 0 || y >= height) dy = -dy;
+
+      logo.style.left = x + 'px';
+      logo.style.top = y + 'px';
+
+      requestAnimationFrame(bounce);
+    }
+
+    bounce();
+  </script>
+
+</body>
+</html>
